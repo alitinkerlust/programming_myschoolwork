@@ -1,0 +1,650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<title>CodeCrunch</title>
+<!-- START NUS Includes-->
+<script type="text/javascript" src="/nus/nussearch.js"></script>
+<link rel="stylesheet" type="text/css" href="/nus/nusbase.css" media="screen, print, projection, handheld" />
+<link rel="stylesheet" type="text/css" href="/nus/nusmenu.css" media="screen, print, projection, handheld" />
+<link rel="stylesheet" type="text/css" href="/nus/nusscreen.css" media="screen, projection, print" />
+<link href="/nus/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<link rel="apple-touch-icon" href="/nus/blank.png"/>
+<!-- END NUS Includes -->
+<script type="text/javascript" src="/js/ajax.js"></script>
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.pager.js"></script>
+<!--<script type="text/javascript" src="/js/folding.js"></script>-->
+<script type="text/javascript" src="/js/jquery.watermark.min.js"></script>
+<script type="text/javascript">
+            function enterPressButton(field, button) {
+                $(field).keypress(function(e){if(e.which==13)$(button).trigger("click");});
+            }
+</script>
+<link rel="stylesheet" href="/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/css/tablesorter/jquery.tablesorter.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<!--<script type="text/javascript" src="js/folding.js"></script>-->
+<script type="text/javascript" src="js/jquery.rating.js"></script>
+<script type="text/javascript" src="js/behaviour.js"></script>
+<script type="text/javascript" src="js/textarea_maxlen.js"></script>
+<script type="text/javascript" src="js/jquery.timer.js"></script>
+
+<script type="text/javascript" src="plupload/js/plupload.full.min.js"></script>
+
+<link rel="stylesheet" href="css/jquery.rating.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/tagcloud.css" type="text/css" />
+<link rel="stylesheet" href="css/jquery-ui-1.7.2.custom.css" type="text/css" />
+
+<link rel="stylesheet" href="plupload/js/jquery_ui_plupload/css/jquery.ui.plupload.css" type="text/css" />
+
+</head>
+
+<body>
+<!-- START NUS-Header -->
+
+<!-- NUS Header -->
+<div id="nusheader" class="nusbody">
+<div class="nuslogodiv">
+<a href="http://www.nus.edu.sg/">
+<img class="nuslogo" src="/nus/soclogo.png" alt="" />
+</a>
+</div>
+<div id="nuspointermenu">
+<ul>
+<li><a href="http://exchange.nus.edu.sg/"><span style="text-transform:none">NUS WebMail</span></a></li>
+<li><a href="https://ivle.nus.edu.sg/lms/default.aspx">ivle</a></li>
+<li><a href="http://www.lib.nus.edu.sg/">library</a></li>
+<li><a href="http://www.nus.edu.sg/campusmap/" >maps</a></li>
+<!--<li><a href="https://aces01.nus.edu.sg/CoE/jsp/coeMain.jsp">calendar</a></li>-->
+<!--<li><a href="/sitemap">sitemap</a></li>-->
+<!--<li><a href="#">a-z index</a></li>-->
+<!--<li><a href="/contact">contact</a></li>-->
+<li><a href="#" id="rightcorner">&nbsp;</a></li>
+</ul>
+<br style="clear: left" />
+</div>
+<div id="searchform">
+<script src="/nus/nussearch.js" type="text/javascript"></script>
+<form id="frmSearch" onsubmit="evalSearch();return false" action=""><div>
+<a href="http://www.nus.edu.sg/search/" style="text-decoration:none; font-size:11px; font-weight:bold; color:#666666">Search </a>
+<input id="txtKeyword" type="text" value="search for..." onfocus="value=''" class="equal" size="18" />
+in
+<select id="SearchMenu" name="SearchMenu">
+<option selected="selected" value="0">NUS Websites</option>
+<option value="1">Internet</option>
+<option value="2">Staff Directory</option>
+<option value="3">Advanced Search</option>
+</select>
+<input class="equal" id="Go" src="/nus/go.png" type="image" />
+</div></form>
+</div>
+</div>
+
+<!-- NUS Local-Navigation --><!--
+<div id="nusmenu" class="nusbody"><div id="nusmenu_l"><div id="nusmenu_r">
+<ul>
+  <li><a href="http://www.comp.nus.edu.sg/index.html">Home</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/about.html">About Us</a></li>
+  <li><a class="drop" href="javascript:;">Departments</a>
+    <ul>
+      <li><a href="http://www.comp.nus.edu.sg/cs" >Computer Science</a></li>
+      <li><a href="http://www.comp.nus.edu.sg/is/" >Information Systems</a></li>
+    </ul>
+  </li>
+  <li><a href="http://www.comp.nus.edu.sg/undergraduates" >Undergraduate</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/graduates" >Graduate</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/research" >Research</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/entrepreneurship" >Entrepreneurship</a></li>
+  <li><a href="http://www.stmi.nus.edu.sg" >Executive Education</a></li>
+  <li><a href="http://www.comp.nus.edu.sg/external_relations" >External Relations</a></li>
+</ul>
+</div></div></div>
+-->
+
+<!-- NUS Inner-Title -->
+<div id="nustitle" class="nusbody"><div id="nustitle_l"><div id="nustitle_r">
+              <h1 id="site-name">
+                <a href="/" title="Home" rel="home">CodeCrunch</a>
+              </h1>
+</div></div></div>
+
+<!-- END NUS-Header -->
+
+<div id="banner">
+        <div id="topmenu">
+        <div id="login">
+                Logged in as: <strong>e0323109</strong>
+                </div>
+                <div style="display: block;"><ul>
+                                        <li><a href="index.php" >Home</a></li>
+                                                    <li><a href="user_course_viewall.php" >My Courses</a></li>
+                                                                <li><a href="tutorial_browser.php" >Browse Tutorials</a></li>
+                                                                <li><a href="task_browser.php" >Browse Tasks</a></li>
+                                                                <li><a href="task_criteria.php" >Search</a></li>
+                                                                <li><a href="user_viewsubmissions.php" >My Submissions</a></li>
+                                                <li><a href="logout_process.php" >Logout</a></li>
+                            </ul></div>
+        </div>
+</div>
+<div id="container">
+<div id="outer">
+<div id="inner">
+	<div id="content_full">                         
+		<div class="content-header"><h3>CS2030 Practical Assessment #1 (Question)</h3></div>
+		<div class="spacer"></div>
+		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr><td valign="top" style="width: 30%;">
+				<div class="meta_header">Tags &amp; Categories</div>
+				<div id="classifyList"></div>
+			</td>
+			<td valign="top" style="width: 40%;">
+				<div class="meta_header">Related Tutorials</div>
+				<div id="tutorialList"></div>
+			</td>
+			<td valign="top" style="width: 30%;">
+			</td>
+			</tr>
+		</table>
+		<div class="content-header">
+			<h3>Task Content
+							</h3>
+		</div>                          
+		<div class="panel"><div class="task-content">
+		<h3>CS2030 Practical Assessment #1</h3>
+<h4>Problem Description</h4>
+<p>You are given a list of banks with their <strong>annual interest</strong> rate, as well as a list of employees with their starting <strong>monthly salary</strong> information, <strong>annual raise</strong> rate, and the bank with which they have their saving accounts.</p>
+<p>An example is given below:</p>
+<pre>DBS 0.015 
+POSB 0.0175
+UOB 0.012
+OCBC 0.0135
+Mohammad Ali 24000.0 1.11 DBS 
+Steve Gates 36000.0 1.05 POSB
+Michael Jordan 71000.0 1.07 UOB
+Lora Star 104000.0 1.02 OCBC
+Donald Kim 44000.0 1.01 DBS
+Bill Jobs 54000.0 0.98 UOB
+</pre>
+<p>Your task is to process the list and represent the problem using an object-oriented model so as to generate the following information according to the examples given in each level.</p>
+<p>Note that entries with annual raise rate that's above 10% or below 0% are normalized to 10% and 0% respectively.</p>
+<p>Take note of the following assumptions:</p>
+<ul>
+<li>The number of lines in the input is no more than 100; </li>
+<li>Each employee has one firstname and one lastname separated by a space; </li>
+<li>Starting salary is a non-negative integer and in units of thousands. </li>
+<li>Annual raise rate is in two-decimal places. </li>
+<li>There are four banks. </li>
+</ul>
+<p>Output of a double value, say <tt>d</tt>, is to be formatted with <tt>String.format("%.2f", d)</tt></p>
+<p>This task is divided into several levels. Read through all the levels to see how the different levels are related. <strong>You need to complete all levels</strong>.</p>
+<p>The <tt>Main</tt> class with the main method that handles input has been provided for level 1, which is to be extended for other levels. You should adhere to the specifications of the <tt>Main</tt> class as required.</p>
+<p>Just remember to:</p>
+<ul>
+<li>check for output format correctness using the <tt>diff</tt> utility (see specific level for usage details). Note that only one test case is provided for this; </li>
+<li>archive and save a copy of all source files into the appropriate level directory (see specific level for usage details). </li>
+</ul>
+<table style="width: 800px;" border="1" cellpadding="10">
+<tbody>
+<tr>
+<td>
+<h4>Level 1</h4>
+<p>The <tt>Main</tt> class has been provided to you.</p>
+<pre>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (sc.hasNext()) {
+            Employee employee = new Employee(sc.next(), sc.next(), sc.nextDouble());
+            employee.setSalaryIncrease(sc.nextDouble());
+            System.out.println(employee);
+        }
+    }
+}
+</pre>
+<p>Without modifying the <tt>Main</tt> class, define the <tt>Employee</tt> class so as to give the desired output as shown in the following sample run of the program. User input is underlined.</p>
+<p>Note that it does not matter whether the output is interspersed between the input or otherwise. It is more important that the ordering of the output is consistent.</p>
+<p>The following is a sample run of the program.  User input is <span style="text-decoration: underline;">underlined</span>.   <!-- Ensure that the last line of output is followed by a newline character. --></p>
+<table border="1">
+<tbody>
+<tr>
+<td><tt> <span style="text-decoration: underline;">Mohammad Ali 24000.0 1.11 </span><br /> <span style="text-decoration: underline;">Steve Gates 36000.0 1.05 </span><br /> <span style="text-decoration: underline;">Michael Jordan 71000.0 1.07 </span><br /> <span style="text-decoration: underline;">Lora Star 104000.0 1.02 </span><br /> <span style="text-decoration: underline;">Donald Kim 44000.0 1.01 </span><br /> <span style="text-decoration: underline;">Bill Jobs  54000.0 0.98</span><br /> Mohammad Ali: salary is 24K, annual raise is 11%<br /> Steve Gates: salary is 36K, annual raise is 5%<br /> Michael Jordan: salary is 71K, annual raise is 7%<br /> Lora Star: salary is 104K, annual raise is 2%<br /> Donald Kim: salary is 44K, annual raise is 1%<br /> Bill Jobs: salary is 54K, annual raise is -2%<br /> </tt></td>
+</tr>
+</tbody>
+</table>
+<p>Click <a href="task_view.php?tid=4404" target="_blank">here</a> to submit to CodeCrunch.</p>
+<p>Check the format correctness of the output by typing the following Unix command</p>
+<pre>$ java Main &lt; test1.in | diff - test1.out
+</pre>
+<p>Make a copy of your Java programs to the level directory by typing the Unix commands</p>
+<pre>$ jar cvf salary1.jar *.java
+$ mkdir salary1
+$ cp *.java salary1
+$ cp salary1.jar salary1
+</pre>
+<p>Verify your jar archive using</p>
+<pre>$ jar tf ~/salary1/salary1.jar
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 800px;" border="1" cellpadding="10">
+<tbody>
+<tr>
+<td>
+<h4>Level 2</h4>
+<p>Check for any negative annual raises or annual raises that are more than 10%. If it's negative, you should adjust the raise rate to 0%. If it's more than 10%, you should adjust it to 10%.     <!--
+<p>You will do this by associating a <tt>SalaryAdjust</tt> object to each <tt>Employee</tt>. --></p>
+<p>Modify your main method to the following:</p>
+<pre>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        SalaryAdjust adjustment = new Type1Adjustment(); //included
+
+        while (sc.hasNext()) {
+            Employee employee = new Employee(sc.next(), sc.next(), //modified
+                    sc.nextDouble(), adjustment);
+            employee.setSalaryIncrease(sc.nextDouble());
+            System.out.println(employee);
+        }
+    }
+}
+</pre>
+<p>Although the salary adjustment can be implemented within the <tt>Employee</tt> class, we need our class to be flexible enough to be able to accept different types of salary adjustments without changing the class implementation.</p>
+<p>As such, implement a salary adjustment (in this case <tt>Type1Adjustment</tt>) object to be referenced by an <tt>Employee</tt> object.  This salary adjustment contains a method <tt>adjust(double raise)</tt> that returns the annual raise after adjustment.</p>
+<p>You will need to implement <tt>SalaryAdjust.java</tt> and <tt>Type1Adjustment.java</tt></p>
+<p>The following is a sample run of the program.  User input is <span style="text-decoration: underline;">underlined</span>.   <!-- Ensure that the last line of output is followed by a newline character. --></p>
+<table border="1">
+<tbody>
+<tr>
+<td><tt> <span style="text-decoration: underline;">Mohammad Ali 24000.0 1.11 </span><br /> <span style="text-decoration: underline;">Steve Gates 36000.0 1.05 </span><br /> <span style="text-decoration: underline;">Michael Jordan 71000.0 1.07 </span><br /> <span style="text-decoration: underline;">Lora Star 104000.0 1.02 </span><br /> <span style="text-decoration: underline;">Donald Kim 44000.0 1.01 </span><br /> <span style="text-decoration: underline;">Bill Jobs  54000.0 0.98</span><br /> Mohammad Ali: salary is 24K, annual raise is 10%<br /> Steve Gates: salary is 36K, annual raise is 5%<br /> Michael Jordan: salary is 71K, annual raise is 7%<br /> Lora Star: salary is 104K, annual raise is 2%<br /> Donald Kim: salary is 44K, annual raise is 1%<br /> Bill Jobs: salary is 54K, annual raise is 0%<br /> </tt></td>
+</tr>
+</tbody>
+</table>
+<p>Click <a href="task_view.php?tid=4405" target="_blank">here</a> to submit to CodeCrunch.</p>
+<p>Check the format correctness of the output by typing the following Unix command</p>
+<pre>$ java Main &lt; test2.in | diff - test2.out
+</pre>
+<p>Make a copy of your Java programs to the level directory by typing the Unix commands</p>
+<pre>$ jar cvf salary2.jar *.java
+$ mkdir salary2
+$ cp *.java salary2
+$ cp salary2.jar salary2
+</pre>
+<p>Verify your jar archive using</p>
+<pre>$ jar tf ~/salary2/salary2.jar
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 800px;" border="1" cellpadding="10">
+<tbody>
+<tr>
+<td>
+<h4>Level 3</h4>
+<p>Each employee opens a savings account from a particular bank, on the day he/she gets the first pay-check. Each bank has an annual interest rate for all account holders.  Each savings account has a balance indicating the amount the employee currently has on deposit.  The bank applies a monthly interest at the end of each month.</p>
+<p>In this task, you need to calculate the balance at the end of a given month for each employee.<br /> <em>Hint: you need to calculate the monthly interest first.</em></p>
+<p>Extend the <tt>Main</tt> class as shown below to read a number of months, followed by a list of banks, then the list of employees.</p>
+<pre>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        SalaryAdjust adjustment = new Type1Adjustment();
+
+        /* read number of months */
+        int months = sc.nextInt();
+   
+        /* included to read the list of banks */
+        Bank.BANKS = new Bank[4];
+        for (int i = 0; i &lt; Bank.BANKS.length; i++) {
+            Bank.BANKS[i] = new Bank(sc.next(), sc.nextDouble());
+        }
+
+        while (sc.hasNext()) {
+            Employee employee = new Employee(sc.next(), sc.next(), 
+                    sc.nextDouble(), adjustment);
+            employee.setSalaryIncrease(sc.nextDouble());
+            SavingsAccount account = new SavingsAccount(employee,    // added
+                    Bank.getBankByName(sc.next()));
+            System.out.println(employee + " " + "has balance of " +  // modified 
+                    String.format("%.2f", account.compute(months))); 
+        }
+    }
+}
+</pre>
+<p>You need to implement <tt>Bank.java</tt> and <tt>SavingsAccount.java</tt>.</p>
+<p>As an example, Mohammad Ali with a starting monthly salary of <tt>24000</tt> deposited in DBS with a annual interest rate of <tt>1.5%</tt> (or monthly interest rate of <tt>0.125%</tt>) has an account balance of <tt>24030.00</tt> after the first month.</p>
+<p>You need to also keep in mind that there is a salary raise after each year.</p>
+<p>The following is a sample run of the program.   <strong>Note that the first line of input is the number of months (<tt>&gt; 0</tt>)</strong>. User input is <span style="text-decoration: underline;">underlined</span>.   <!-- Ensure that the last line of output is followed by a newline character. --></p>
+<table border="1">
+<tbody>
+<tr>
+<td><tt> <span style="text-decoration: underline;">1</span><br /> <span style="text-decoration: underline;">DBS 0.015</span><br /> <span style="text-decoration: underline;">POSB 0.0175</span><br /> <span style="text-decoration: underline;">UOB 0.012</span><br /> <span style="text-decoration: underline;">OCBC 0.0135</span><br /> <span style="text-decoration: underline;">Mohammad Ali 24000.0 1.11 DBS</span><br /> <span style="text-decoration: underline;">Steve Gates 36000.0 1.05 POSB</span><br /> <span style="text-decoration: underline;">Michael Jordan 71000.0 1.07 UOB</span><br /> <span style="text-decoration: underline;">Lora Star 104000.0 1.02 OCBC</span><br /> <span style="text-decoration: underline;">Donald Kim 44000.0 1.01 DBS</span><br /> <span style="text-decoration: underline;">Bill Jobs  54000.0 0.98 UOB</span><br /> Mohammad Ali: salary is 24K, annual raise is 10% has balance of 24030.00<br /> Steve Gates: salary is 36K, annual raise is 5% has balance of 36052.50<br /> Michael Jordan: salary is 71K, annual raise is 7% has balance of 71071.00<br /> Lora Star: salary is 104K, annual raise is 2% has balance of 104117.00<br /> Donald Kim: salary is 44K, annual raise is 1% has balance of 44055.00<br /> Bill Jobs: salary is 54K, annual raise is 0% has balance of 54054.00<br /> </tt></td>
+</tr>
+<tr>
+<td><tt> <span style="text-decoration: underline;">12</span><br /> <span style="text-decoration: underline;">DBS 0.015</span><br /> <span style="text-decoration: underline;">POSB 0.0175</span><br /> <span style="text-decoration: underline;">UOB 0.012</span><br /> <span style="text-decoration: underline;">OCBC 0.0135</span><br /> <span style="text-decoration: underline;">Mohammad Ali 24000.0 1.11 DBS</span><br /> <span style="text-decoration: underline;">Steve Gates 36000.0 1.05 POSB</span><br /> <span style="text-decoration: underline;">Michael Jordan 71000.0 1.07 UOB</span><br /> <span style="text-decoration: underline;">Lora Star 104000.0 1.02 OCBC</span><br /> <span style="text-decoration: underline;">Donald Kim 44000.0 1.01 DBS</span><br /> <span style="text-decoration: underline;">Bill Jobs  54000.0 0.98 UOB</span><br /> Mohammad Ali: salary is 24K, annual raise is 10% has balance of 290350.76<br /> Steve Gates: salary is 36K, annual raise is 5% has balance of 436116.98<br /> Michael Jordan: salary is 71K, annual raise is 7% has balance of 857558.36<br /> Lora Star: salary is 104K, annual raise is 2% has balance of 1257163.75<br /> Donald Kim: salary is 44K, annual raise is 1% has balance of 532309.72<br /> Bill Jobs: salary is 54K, annual raise is 0% has balance of 652227.48<br /> </tt></td>
+</tr>
+<tr>
+<td><tt> <span style="text-decoration: underline;">13</span><br /> <span style="text-decoration: underline;">DBS 0.015</span><br /> <span style="text-decoration: underline;">POSB 0.0175</span><br /> <span style="text-decoration: underline;">UOB 0.012</span><br /> <span style="text-decoration: underline;">OCBC 0.0135</span><br /> <span style="text-decoration: underline;">Mohammad Ali 24000.0 1.11 DBS</span><br /> <span style="text-decoration: underline;">Steve Gates 36000.0 1.05 POSB</span><br /> <span style="text-decoration: underline;">Michael Jordan 71000.0 1.07 UOB</span><br /> <span style="text-decoration: underline;">Lora Star 104000.0 1.02 OCBC</span><br /> <span style="text-decoration: underline;">Donald Kim 44000.0 1.01 DBS</span><br /> <span style="text-decoration: underline;">Bill Jobs  54000.0 0.98 UOB</span><br /> Mohammad Ali: salary is 24K, annual raise is 10% has balance of 317146.70<br /> Steve Gates: salary is 36K, annual raise is 5% has balance of 474608.11<br /> Michael Jordan: salary is 71K, annual raise is 7% has balance of 934461.89<br /> Lora Star: salary is 104K, annual raise is 2% has balance of 1364777.40<br /> Donald Kim: salary is 44K, annual raise is 1% has balance of 577470.66<br /> Bill Jobs: salary is 54K, annual raise is 0% has balance of 706933.71<br /> </tt></td>
+</tr>
+</tbody>
+</table>
+<p>Click <a href="task_view.php?tid=4406" target="_blank">here</a> to submit to CodeCrunch.</p>
+<p>Check the format correctness of the output by typing the following Unix command</p>
+<pre>$ java Main &lt; test3.in | diff - test3.out
+</pre>
+<p>Make a copy of your Java programs to the level directory by typing the Unix commands</p>
+<pre>$ jar cvf salary3.jar *.java
+$ mkdir salary3
+$ cp *.java salary3
+$ cp salary3.jar salary3
+</pre>
+<p>Verify your jar archive using</p>
+<pre>$ jar tf ~/salary3/salary3.jar
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 800px;" border="1" cellpadding="10">
+<tbody>
+<tr>
+<td>
+<h4>Level 4</h4>
+<p>This level is similar to level 3, except that you need to sort the output in terms of the final balance of each employee in ascending order. You may assume that all final balances are unique.</p>
+<p>Further extend the <tt>Main</tt> class, and include any other classes which you deem necessary.</p>
+<p>The following is a sample run of the program.  User input is <span style="text-decoration: underline;">underlined</span>.   <!-- Ensure that the last line of output is followed by a newline character. --></p>
+<table border="1">
+<tbody>
+<tr>
+<td><tt> <span style="text-decoration: underline;">13</span><br /> <span style="text-decoration: underline;">DBS 0.015</span><br /> <span style="text-decoration: underline;">POSB 0.0175</span><br /> <span style="text-decoration: underline;">UOB 0.012</span><br /> <span style="text-decoration: underline;">OCBC 0.0135</span><br /> <span style="text-decoration: underline;">Mohammad Ali 24000.0 1.11 DBS</span><br /> <span style="text-decoration: underline;">Steve Gates 36000.0 1.05 POSB</span><br /> <span style="text-decoration: underline;">Michael Jordan 71000.0 1.07 UOB</span><br /> <span style="text-decoration: underline;">Lora Star 104000.0 1.02 OCBC</span><br /> <span style="text-decoration: underline;">Donald Kim 44000.0 1.01 DBS</span><br /> <span style="text-decoration: underline;">Bill Jobs  54000.0 0.98 UOB</span><br /> Mohammad Ali: salary is 24K, annual raise is 10% has balance of 317146.70<br /> Steve Gates: salary is 36K, annual raise is 5% has balance of 474608.11<br /> Donald Kim: salary is 44K, annual raise is 1% has balance of 577470.66<br /> Bill Jobs: salary is 54K, annual raise is 0% has balance of 706933.71<br /> Michael Jordan: salary is 71K, annual raise is 7% has balance of 934461.89<br /> Lora Star: salary is 104K, annual raise is 2% has balance of 1364777.40<br /> </tt></td>
+</tr>
+</tbody>
+</table>
+<p>Click <a href="task_view.php?tid=4407" target="_blank">here</a> to submit to CodeCrunch.</p>
+<p>Check the format correctness of the output by typing the following Unix command</p>
+<pre>$ java Main &lt; test4.in | diff - test4.out
+</pre>
+<p>Make a copy of your Java programs to the level directory by typing the Unix commands</p>
+<pre>$ jar cvf salary4.jar *.java
+$ mkdir salary4
+$ cp *.java salary4
+$ cp salary4.jar salary4
+</pre>
+<p>Verify your jar archive using</p>
+<pre>$ jar tf ~/salary4/salary4.jar
+</pre>
+</td>
+</tr>
+</tbody>
+</table>		</div></div>                          
+									<input type="hidden" id="tid" name="tid" value="4398" />
+		</div>
+		<!-- end content -->
+</div>
+<!-- end inner -->
+<div id="loading-mask">
+        <p id="loading_mask_loader" class="loader"> <img alt="Loading..." src="images/ajax-loader-tr.gif" /> <br/>
+                Please wait... </p>
+</div>
+<script type="text/javascript">
+$(".star").rating({
+        focus: function(value, link) {
+                var tip = $("#rating_text");
+                tip[0].data = tip[0].data || tip.html(); 
+                tip.html(link.title || "value: " + value);
+        },
+        blur: function(value, link) {
+                var tip = $("#rating_text");
+                $("#rating_text").html(tip[0].data || "");
+        },
+        callback: function(value, link) {
+                $.ajax({
+                        type: "POST",
+                        url: "task_updaterating.php",
+                        data: ({tid:$("#tid").val(), rating:value}),
+                        success: function(html) {
+                                var msg = html.split(";");
+                                $("#rating_text").removeClass().addClass(msg[0]);
+                                $("#rating_text").html(msg[1]);
+                        }
+                });
+        }
+});
+
+function getComments() {
+        $.ajax({
+                type: "POST",
+                url: "task_getcomments.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#commentList").html(html);
+                }
+        });
+}
+
+function doTaskGrade(e, d) {
+        $.ajax({
+                type: "POST",
+                url: "doTaskGrade.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#practiceNotification").removeClass().addClass(msg[0]);
+                        $("#practiceNotification").html(msg[1]);
+                }
+        });
+
+}
+
+function doCourseTaskGrade(e, d) {
+        $.ajax({
+                type: "POST",
+                url: "doTaskGrade.php",
+                data: ({tid:$("#tid").val(), course_id:$("#course_id").val(), do_course:1}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#courseNotification").removeClass().addClass(msg[0]);
+                        $("#courseNotification").html(msg[1]);
+                }
+        });
+
+}
+
+function addComment() {
+        $.ajax({
+                type: "POST",
+                url: "task_addcomment.php",
+                data: ({tid:$("#tid").val(), comment:encodeURIComponent($("#comment").val())}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#commentNotification").removeClass().addClass(msg[0]);
+                        $("#commentNotification").html(msg[1]);
+                        
+                        getComments();
+                }
+        });
+}
+
+function deleteComment(c) {
+        $.ajax({
+                type: "POST",
+                url: "task_deletecomment.php",
+                data: ({comment_id:c}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#commentNotification").removeClass().addClass(msg[0]);
+                        $("#commentNotification").html(msg[1]);
+                        
+                        getComments();
+                }
+        });
+}
+
+function getClassify(){
+                $.ajax({
+                type: "GET",
+                url: "task_classify.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#classifyList").html(html);
+                }
+        });
+}
+
+function getTutorial(){
+        $.ajax({
+                type: "POST",
+                url: "task_gettutorials.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#tutorialList").html(html);
+                }
+        });
+}
+
+function getQueries() {
+        $.ajax({
+                type: "POST",
+                url: "task_getqueries.php",
+                data: ({tid:$("#tid").val()}),
+                success: function(html) {
+                        $("#queryList").html(html);
+                }
+        });
+}
+
+function addQuery() {
+        $.ajax({
+                type: "POST",
+                url: "task_addquery.php",
+                data: ({tid:$("#tid").val(), contest_id:$("#contest_id").val(), query:encodeURIComponent($("#query").val())}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#queryNotification").removeClass().addClass(msg[0]);
+                        $("#queryNotification").html(msg[1]);
+                        
+                        getQueries();
+                }
+        });
+}
+
+function deleteQuery(q) {
+        $.ajax({
+                type: "POST",
+                url: "task_deletequery.php",
+                data: ({query_id:q}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#queryNotification").removeClass().addClass(msg[0]);
+                        $("#queryNotification").html(msg[1]);
+                        
+                        getQueries();
+                }
+        });
+}
+
+function addTag() {
+        $.ajax({
+                type: "POST",
+                url: "tag_add.php",
+                data: ({tid:$("#tid").val(), tags:$("#tagwords").val()}),
+                success: function(html) {
+                        var msg = html.split(";");
+                        $("#tagNotification").removeClass().addClass(msg[0]);
+                        $("#tagNotification").html(msg[1]);
+                        
+                        getClassify();
+                }
+        });
+}
+
+
+$(document).ready(function() {
+        getComments();
+        getQueries();
+        getClassify();
+        getTutorial();
+        //getCloud();
+});
+
+$(document).everyTime(60000, function(i) {
+        if ($("#tid").val() != "" && $("#tid").val() != null) {
+                $.ajax({
+                        type: "POST",
+                        url: "task_checkcontest.php",
+                        data: ({tid:$("#tid").val()}),
+                        success: function(html) {
+                                if (html == "0") {
+                                        $("#contest_submit").html("");
+                                }
+                        }
+                });
+                $.ajax({
+                        type: "POST",
+                        url: "task_checkcourse.php",
+                        data: ({tid:$("#tid").val()}),
+                        success: function(html) {
+                                if (html == "0") {
+                                        $("#course_submit").html("");
+                                }
+                        }
+                });
+        }
+}, 0);
+
+$('#loading_mask_loader')
+        .hide()  // hide it initially
+        .ajaxStart(function() {
+                $(this).show();
+        })
+        .ajaxStop(function() {
+                $(this).hide();
+        });
+        
+</script>
+</body>
+</html>
+</div> <!-- end outer -->
+
+</div> <!-- end container -->
+
+<!-- START NUS-Footer --> 
+<div id="nusfooter" class="nusbody">
+<div id="nusfooter_ml"><div id="nusfooter_mr">
+<div id="nusfooter_tc"><div id="nusfooter_tl"><div id="nusfooter_tr">
+<div id="nusfooter_bc"><div id="nusfooter_bl"><div id="nusfooter_br">
+<div class="inner"><div class="left"><p>&copy; Copyright 2009-2019 National University of Singapore. All Rights Reserved.</p>  
+<p class="nusfooterlinks">
+<a href="http://www.nus.edu.sg/terms.php">Terms of Use</a> |
+<a href="http://www.nus.edu.sg/policy.php">Privacy</a> |
+<a href="http://www.nus.edu.sg/nondiscrim.php">Non-discrimination</a></p> 
+</div>    
+<div class="right">
+<a href="https://mysoc.nus.edu.sg/">MySoC</a> |
+<a href="https://docs.comp.nus.edu.sg/cf/">Computing Facilities</a> |
+<a href="http://www.nus.edu.sg/search/">Search</a> |
+<a href="http://www.nus.edu.sg/campusmap/">Campus Map</a>
+<p>School of Computing, National University of Singapore</p>
+</div>    
+<div style="clear: both;"> </div>
+</div>
+</div></div></div>
+</div></div></div>
+</div></div>
+</div>
+<!-- END NUS-Footer --></body>
+</html>
